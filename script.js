@@ -1,16 +1,16 @@
 var isDate = function (input) {
-  //   write your code here
-	const dateRegex = /^\d{4}[-/]\d{2}[-/]\d{2}$/;
-
   if (input instanceof Date) {
-    return !isNaN(input.getTime()); // Check if it's a valid Date object
+    // It's a Date object – check if it's valid
+    return !isNaN(input.getTime());
   }
 
-  if (typeof input === 'string' && dateRegex.test(input)) {
-    const date = new Date(input);
-    return !isNaN(date.getTime()); // Check if it's a real date
+  if (typeof input === 'string' || typeof input === 'number') {
+    // Try to parse strings and numbers into a Date
+    const parsed = new Date(input);
+    return !isNaN(parsed.getTime());
   }
 
+  // Any other type (object, boolean, null, undefined, etc.)
   return false;
 };
 
