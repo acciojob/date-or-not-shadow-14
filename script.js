@@ -1,15 +1,17 @@
 var isDate = function (input) {
   //   write your code here
-	if (input instanceof Date) {
-    return !isNaN(input.getTime()); // Valid Date object
-  }
-  
-  if (typeof input === 'string') {
-    const parsedDate = new Date(input);
-    return !isNaN(parsedDate.getTime()); // Valid string-parsed date
+	const dateRegex = /^\d{4}[-/]\d{2}[-/]\d{2}$/;
+
+  if (input instanceof Date) {
+    return !isNaN(input.getTime()); // Check if it's a valid Date object
   }
 
-  return false; 
+  if (typeof input === 'string' && dateRegex.test(input)) {
+    const date = new Date(input);
+    return !isNaN(date.getTime()); // Check if it's a real date
+  }
+
+  return false;
 };
 
 // Do not change the code below.
