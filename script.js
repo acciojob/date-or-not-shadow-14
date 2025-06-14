@@ -9,7 +9,7 @@ var isDate = function (input) {
     return !isNaN(parsedDate.getTime()); // Valid string-parsed date
   }
 
-  return false; /
+  return false; 
 };
 
 // Do not change the code below.
